@@ -13,9 +13,9 @@ const INITIAL_COORDINATES = {
   lat: 47.6038321,
   lon: -122.330062,
 };
-const key = "pk.d3239da17a96e36bb9f66cb0184f44ec";
+const key = "";
 
-const API = "https://us1.locationiq.com/v1/search.php";
+const API = "";
 
 function App() {
   const [coordinates, setCoordinates] = useState(INITIAL_COORDINATES);
