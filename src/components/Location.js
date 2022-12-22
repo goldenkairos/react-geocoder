@@ -1,12 +1,16 @@
+
+
+
+
 function Location(props) {
 
-  const getLat = props.getLat;
-  const getLon = props.getLon;
+  const coordinates = props.coordinates
+  
 
   return (
     <ul>
-      <li>Longitude:{getLon}</li>
-      <li>Lattitude:{getLat}</li>
+      <li>Longitude:{coordinates[0].lon}</li>
+      <li>Lattitude:{coordinates[0].lat}</li>
     </ul>
   );
 }

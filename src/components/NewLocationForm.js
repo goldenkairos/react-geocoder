@@ -5,38 +5,35 @@ const INITIAL_FORM_DATA ={
   name:'Seattle'
 }
 
+const NewLocationForm = (props) => {
 
-const NewLocationForm = () => {
-//   const [formFields, setFormFields] = useState({
-//     name: '',
-//     email: ''
-// });
 const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
 const onNameChange = (event) => {
   console.log("Handle change called")
   console.log(`Target name: ${event.target.name} Target value: ${event.target.value}`)
-    setFormData(event.target.value)}
-  // const newFormField = {
+  const newFormData = {
+    ...formData,
+    [event.target.name]: event.target.value
+  };
 
-  //   ...formFields,
-  //   [event.target.name]: event.target.value
-  // }
-  // setFormFields(newFormField);
-//   setFormData({
-//       ...formData,
-//       name: event.target.value
-//   })
-// };
+  setFormData(newFormData);  
 
+  }
+
+const handleNewSubmit =(e) => {
+  e.preventDefault();
+  console.log(formData)
+  props.getInfoCallbackfunc(formData);
+};
 
   return (
-      <form>
+      <form onSubmit={handleNewSubmit}>
           <div>
-              <label htmlFor="city"></label>
+              <label htmlFor="name"></label>
               <input 
               type="text"
-              name="city" 
+              name="name" 
               value={formData.name}  
               onChange={onNameChange}
               />

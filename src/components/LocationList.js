@@ -1,17 +1,16 @@
 import Location from "./Location";
 
 function LocationList(props) {
-  const getLat = props.getLat;
-  const getLon = props.getLon;
+  const getInfoCallbackfunc= props.getInfoCallbackfunc;
+  const coordinates = props.coordinates;
+
 
   return (
     <div>
       <Location 
-      key={props.lat}
-      // lat={props.lat}
-      // lon={props.lon}
-      getLat={getLat}
-      getLon={getLon}
+      
+      getInfoCallbackfunc={getInfoCallbackfunc}
+      coordinates={coordinates}
 
       />
     </div>
