@@ -8,19 +8,11 @@ import keys from "./env";
 
 import { useState, useEffect } from "react";
 import { DateTime } from "luxon";
-// const axios = require("axios");
-// require('dotenv').config();
-// const INITIAL_CITY = "Seattle";
-
-// const INITIAL_COORDINATES = {
-//   lat: 47.6038321,
-//   lon: -122.330062,
-// };
 
 const INITIAL_COORDINATES = {
-  name: "Seattle",
-  lat: 47.6038321,
-  lon: -122.330062,
+  name: "",
+  lat: "",
+  lon: "",
 };
 
 function App() {
@@ -43,11 +35,12 @@ function App() {
         };
         setCoordinates(locAPICopy);
 
+        if (!cityList.includes(newCity)){
         setCityList([
           ...cityList,
           { name: newCity, lat: result.data[0].lat, lon: result.data[0].lon },
         ]);
-        console.log(cityList);
+        console.log(cityList);}
       })
       .catch((error) => {
         console.log(error);
@@ -57,7 +50,7 @@ function App() {
     //we can create a seperate component here as HistoryList
   const historyList = cityList.map((item) => {
     return (
-      <div key={DateTime.now()}>
+      <div className="historyList" key={DateTime.now()}>
         <h4>{item.name}</h4>
         <Location coordinates={item} />
       </div>

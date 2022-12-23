@@ -37,7 +37,7 @@
   }
 }
 
-.result {
+.result, .historyList {
   display: block;
   text-align: left;
 }
