@@ -6,23 +6,25 @@ import { useState } from "react";
 // };
 
 const NewLocationForm = (props) => {
-  const city = props.city;
-  const [formData, setFormData] = useState(city);
+  const coordinates = props.coordinates;
+  const [formData, setFormData] = useState(coordinates);
 
   const onNameChange = (event) => {
     console.log("Handle change called");
     console.log(
       `Target name: ${event.target.name} Target value: ${event.target.value}`
     );
-    const newFormData = event.target.value;
-
+    // const newFormData = event.target.value;
+    const newFormData = {
+      ...formData,
+      [event.target.name]:event.target.value};
     setFormData(newFormData);
   };
 
   const handleNewSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    props.searchCityCallbackfunc(formData);
+    props.searchCityCallbackfunc(formData.name);
   };
 
   return (
@@ -32,7 +34,7 @@ const NewLocationForm = (props) => {
         <input
           type="text"
           name="name"
-          value={formData}
+          value={formData.name}
           onChange={onNameChange}
         />
 
