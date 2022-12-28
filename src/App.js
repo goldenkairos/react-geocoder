@@ -34,7 +34,6 @@ function App() {
           };
         };
         setCoordinates(locAPICopy);
-
         if (!cityList.includes(newCity)){
         setCityList([
           ...cityList,
@@ -47,11 +46,12 @@ function App() {
       });
   };
 
+
+  
     //we can create a seperate component here as HistoryList
   const historyList = cityList.map((item) => {
     return (
-      <div className="historyList" key={DateTime.now()}>
-        <h4>{item.name}</h4>
+      <div className="historyList" key={DateTime.now()}>        
         <Location coordinates={item} />
       </div>
     );
@@ -68,7 +68,7 @@ function App() {
           coordinates={coordinates}
         />
         <section className="result">
-          <h3> Result for:</h3>
+          
           <LocationList coordinates={coordinates} />
         </section>
         <section>
