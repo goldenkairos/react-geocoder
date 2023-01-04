@@ -34,24 +34,28 @@ function App() {
           };
         };
         setCoordinates(locAPICopy);
-        if (!cityList.includes(newCity)){
+        // if (!cityList.includes(newCity)){
         setCityList([
           ...cityList,
-          { name: newCity, lat: result.data[0].lat, lon: result.data[0].lon },
+          {
+            name: newCity,
+            lat: result.data[0].lat,
+            lon: result.data[0].lon,
+            key: Date.now(),
+          },
         ]);
-        console.log(cityList);}
+        console.log(cityList);
+        // }
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-
-  
-    //we can create a seperate component here as HistoryList
+  //we can create a seperate component here as HistoryList
   const historyList = cityList.map((item) => {
     return (
-      <div className="historyList" key={DateTime.now()}>        
+      <div className="historyList" key={DateTime.now()}>
         <Location coordinates={item} />
       </div>
     );
@@ -68,7 +72,6 @@ function App() {
           coordinates={coordinates}
         />
         <section className="result">
-          
           <LocationList coordinates={coordinates} />
         </section>
         <section>
