@@ -34,14 +34,15 @@ function App() {
           };
         };
         setCoordinates(locAPICopy);
-        // if (!cityList.includes(newCity)){
+
         setCityList([
           ...cityList,
           {
             name: newCity,
             lat: result.data[0].lat,
             lon: result.data[0].lon,
-            key: Date.now(),
+            // changes here
+            key: Date.now(), 
           },
         ]);
         console.log(cityList);
@@ -55,7 +56,8 @@ function App() {
   //we can create a seperate component here as HistoryList
   const historyList = cityList.map((item) => {
     return (
-      <div className="historyList" key={DateTime.now()}>
+      // <div className="historyList" key={DateTime.now()}>
+      <div className="historyList" key={item.key}>
         <Location coordinates={item} />
       </div>
     );
